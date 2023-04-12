@@ -47,4 +47,11 @@ module.exports = {
         console.log(error);
     })
   },
+  deleteProduct: (req, res) => {
+    productModel.deleteOne({_id: req.params.id}).then(() => {
+        console.log("deleted");
+    }).catch((error) => {
+        console.log(error);
+    })
+  }
 };

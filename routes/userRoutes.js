@@ -17,5 +17,6 @@ router.patch(
   updateProductValidation,
   productController.updateProduct
 );
+router.delete("/deleteProduct/:id", productController.deleteProduct)
 
 module.exports = router;
