@@ -66,7 +66,6 @@ module.exports = {
      })
   },
   updateProduct: (req, res) => {
-    console.log(req.validData);
     productModel
       .updateOne(
         { _id: req.params.id },
