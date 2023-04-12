@@ -28,7 +28,7 @@ const productValidation = (req, res, next) => {
       next();
     })
     .catch((error) => {
-      const [validationErr] = error?.errors || ["Something went wrong"];
+    //   const [validationErr] = error?.errors || ["Something went wrong"];
       console.log(error.errors);
     });
 };
