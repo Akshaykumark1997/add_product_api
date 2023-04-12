@@ -1,7 +1,7 @@
 const productModel = require("../model/productSchema");
 
 module.exports = {
-  addProduct: (req, res) => {
+  addProduct: (req, res, next) => {
     let images = req.files.map((ele) => ({
       path: ele.path,
       name: ele.filename,
@@ -23,10 +23,13 @@ module.exports = {
         images,
       })
       .then((data) => {
-        console.log(data);
+        res.json({
+            success:true,
+            message:"Product added successfully",
+        })
       })
       .catch((error) => {
-        console.log(error);
+        next(error);
       });
   },
   editProduct: (req, res) => {
@@ -54,9 +57,12 @@ module.exports = {
          },
        }
      ).then(() => {
-        console.log("edit completed");
+        res.json({
+            success: true,
+            message: "Product edited successfully",
+        })
      }).catch((error) => {
-        console.log(error);
+        next(error);
      })
   },
   updateProduct: (req, res) => {
@@ -71,20 +77,26 @@ module.exports = {
         }
       )
       .then(() => {
-        console.log("updated");
+        res.json({
+            success: true,
+            message: "Product updated successfully",
+        })
       })
       .catch((error) => {
-        console.log(error);
+        next(error);
       });
   },
   deleteProduct: (req, res) => {
     productModel
       .deleteOne({ _id: req.params.id })
       .then(() => {
-        console.log("deleted");
+        res.json({
+            success: true,
+            message: "Product deleted successfully",
+        })
       })
       .catch((error) => {
-        console.log(error);
+        next(error);
       });
   },
 };
