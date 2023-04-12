@@ -11,12 +11,17 @@ router.post(
   productValidation,
   productController.addProduct
 );
-// router.put("/editProduct",uploadImage, productValidation, productController.editProduct);
+router.put(
+  "/editProduct/:id",
+  uploadImage,
+  productValidation,
+  productController.editProduct
+);
 router.patch(
   "/updateProduct/:id",
   updateProductValidation,
   productController.updateProduct
 );
-router.delete("/deleteProduct/:id", productController.deleteProduct)
+router.delete("/deleteProduct/:id", productController.deleteProduct);
 
 module.exports = router;
