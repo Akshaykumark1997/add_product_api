@@ -9,6 +9,15 @@ const productSchema = yup.object().shape({
     .trim()
     .required("Name can not be empty"),
   description: yup.string().trim().required("Description can not be empty"),
+  discount: yup
+    .number()
+    .max(100, "Discount cannot be more than 100%")
+    .integer("Discount should be valid"),
+  shippingCharge: yup
+    .number()
+    .max(150, "Shipping charge should not be more than 150")
+    .positive("Shipping charge should be valid")
+    .integer("Shipping charge should be valid"),
   price: yup
     .number()
     .positive("Price should be valid")
@@ -28,7 +37,7 @@ const productValidation = (req, res, next) => {
       next();
     })
     .catch((error) => {
-    //   const [validationErr] = error?.errors || ["Something went wrong"];
+      //   const [validationErr] = error?.errors || ["Something went wrong"];
       console.log(error.errors);
     });
 };

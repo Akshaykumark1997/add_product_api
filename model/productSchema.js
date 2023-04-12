@@ -15,6 +15,14 @@ const productSchema = new Schema({
     type: Number,
     required: true,
   },
+  discount: {
+    type: Number,
+    required: true,
+  },
+  shippingCharge:{
+    type: Number,
+    required:true,
+  },
   images: [
     {
       name: {
@@ -28,3 +36,5 @@ const productSchema = new Schema({
     },
   ],
 });
+const product = mongoose.model("products", productSchema);
+module.exports = product;
