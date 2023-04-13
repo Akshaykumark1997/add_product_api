@@ -17,6 +17,9 @@ const updateProductValidation = (req, res, next) => {
     })
     .catch((error) => {
       //   const [validationErr] = error?.errors || ["Something went wrong"];
+      res.status(400).json({
+        error
+      })
       console.log(error.errors);
     });
 };
